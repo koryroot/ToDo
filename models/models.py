@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import api, fields, models
 
 
-# class to_do(models.Model):
-#     _name = 'to_do.to_do'
-#     _description = 'to_do.to_do'
+class task(models.Model):
+    _name = 'task.task'
+    _description = 'New Description'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    name = fields.Char(string='Name')
+    body = fields.Html(string='Body')
+    state = fields.Selection(string='State', selection=[('draft', 'Draft'), ('progress', 'Progress'),('confirmed', 'Confirmed'),('done', 'Done')])
+    
+    
+
